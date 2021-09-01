@@ -1,0 +1,190 @@
+<script>
+
+    $(document).ready(function(){
+
+        function getAbcSubmitFormIdForCeresUniqueId( ceresUniqueId ) {
+            return $.Deferred(function(defer) {
+                if ( ceresUniqueId) {
+                    $.get('https://plentymarkets.abcsubmit.com/api/v1/forms/publish/plentymarkets/' + ceresUniqueId)
+                    .then(function (data) {
+                        if(data && data.formId) {
+                            defer.resolve(data.formId);
+                        } else {
+                            defer.reject();
+                        }
+                    }).fail(function (xhr) {
+                        defer.reject();
+                    });
+                } else {
+                    defer.reject();
+                }
+            });
+        }
+
+        function upgradeDOMNode(node) {
+
+            if ( node.hasAttribute("data-upgraded") ) {
+                return;
+            }
+
+            var ceresUniqueId = null,
+                matches;
+
+            for ( let i=0, len = node.classList.length; i<len; i++ ) {
+                if ( !!(matches = /^uid-(.*)$/.exec(node.classList[i]))) {
+                    ceresUniqueId = matches[1];
+                    break;
+                }
+            }
+
+            if (!ceresUniqueId) {
+                return;
+            }
+
+            node.setAttribute("data-upgraded", "1");
+
+            var embedCallback = null;
+
+            $(node).find(".open-abcsubmit-editor").on("click", function(){
+                if ( embedCallback ) {
+                    embedCallback();
+                }
+            });
+
+            function embedForm( formId ) {
+
+                $(node).find('script, iframe').remove();
+
+                $(node).addClass('has-form');
+
+                var script = document.createElement('script');
+                script.src = 'https://plentymarkets.abcsubmit.com/embed/' + formId + '/embed.js';
+                script.setAttribute("data-origin", "plentymarkets.abcsubmit.com");
+                script.setAttribute("data-role", "abcsubmit-form-embed");
+                script.setAttribute("data-document-id", formId);
+                script.setAttribute("type", 'text/javascript');
+                node.style.paddingBottom = '0';
+                node.style.paddingTop = '2rem';
+                node.appendChild(script);
+
+            }
+
+            function receiveCloseEditorPostMessage(event) {
+
+                if (
+                    event.data
+                    && event.data.from
+                    && event.data.action === 'editor:close'
+                    && event.data.ceres_uuid === ceresUniqueId
+                ) {
+
+                    $('#abcsubmit-full-screen').remove();
+
+                    document.documentElement.style.overflow = '';
+
+                    window.removeEventListener('message', receiveCloseEditorPostMessage, true);
+
+                    updateContent(ceresUniqueId);
+
+                }
+
+            }
+
+            function embedEditor( formId )
+            {
+
+                if (!document.getElementById('abcsubmit-full-screen'))
+                {
+                    var root                = document.createElement("div");
+                    root.className          = "abcsubmit-full-screen";
+                    root.setAttribute('id', "abcsubmit-full-screen");
+                    var header              = document.createElement("div");
+                    header.className        = "abcsubmit-header-in-full-screen";
+                    var name                = document.createElement("div");
+                    name.className          = "abcsubmit-header-in-full-screen-name";
+                    name.textContent        = "AbcSubmit Form Builder";
+                    var closeButton         = document.createElement("div");
+                    closeButton.textContent = "Close Editor";
+                    closeButton.className   = 'abcsubmit-header-in-full-screen-close';
+                    header.appendChild(name);
+                    header.appendChild(closeButton);
+                    var iframe       = document.createElement("iframe");
+                    iframe.className = "abcsubmit-content-preview";
+                    iframe.src       = "https://plentymarkets.abcsubmit.com/edit/" + (formId || "") + "?ceresUniqueId=" + ceresUniqueId;
+                    iframe.setAttribute("frameborder", "0");
+
+                    root.appendChild(header);
+                    root.appendChild(iframe);
+
+                    closeButton.onclick = function ()
+                    {
+                        root.parentElement.removeChild(root);
+                        document.documentElement.style.overflow = '';
+                        updateContent(ceresUniqueId);
+                    }
+
+                    document.body.appendChild(root);
+                    document.documentElement.style.overflow = 'hidden';
+
+                    window.addEventListener(
+                        "message",
+                        receiveCloseEditorPostMessage,
+                        true
+                    );
+
+                }
+
+            }
+
+            function updateContent( ceresUniqueId) {
+
+                getAbcSubmitFormIdForCeresUniqueId(ceresUniqueId)
+                    .then( function( abcSubmitFormId ) {
+                        embedForm(abcSubmitFormId);
+                        embedCallback = function() {
+                            embedEditor(abcSubmitFormId);
+                        };
+                    })
+                    .fail(function () {
+                        embedCallback = function() {
+                            embedEditor();
+                        };
+                    });
+
+            }
+
+            updateContent(ceresUniqueId);
+
+        }
+
+        function scanForDOMNodesAndUpgradeThem() {
+            $(document).find('.form-builder-software.widget:not([data-upgraded])')
+                       .each(function () {
+                           upgradeDOMNode(this);
+                       });
+        }
+
+        var config = { attributes: false, childList: true, subtree: true },
+            callback = function(mutationsList, observer) {
+                for(const mutation of mutationsList) {
+                    if (mutation.type === 'childList') {
+                        scanForDOMNodesAndUpgradeThem();
+                    }
+                    else if (mutation.type === 'subtree') {
+                        scanForDOMNodesAndUpgradeThem();
+                    }
+                }
+            },
+            observer = new MutationObserver(callback);
+
+        observer.observe(document.body, config);
+
+        scanForDOMNodesAndUpgradeThem();
+
+    });
+
+    function hideLoader(){
+        $(".load-builder").remove();
+    }
+
+</script>

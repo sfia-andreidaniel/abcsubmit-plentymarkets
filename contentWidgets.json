@@ -1,0 +1,22 @@
+[
+    {
+        "identifier": "TestWidget::TestWidget",
+        "label": "Widget.fomBuilderLabel",
+        "previewImageURL": "/images/abcsubmit-widget.svg",
+        "type": "default",
+        "position": 1,
+        "widgetClass": "TestWidget\\Widgets\\TestWidget",
+        "settings": {
+            "classNames": {
+                "type": "text",
+                "required": false,
+                "defaultValue": "",
+                "options": {
+                    "name": "AbcSubmit.additionalClasses",
+                    "tooltip": "AbcSubmit.additionalClasses"
+                }
+            }
+        }
+
+    }
+]
