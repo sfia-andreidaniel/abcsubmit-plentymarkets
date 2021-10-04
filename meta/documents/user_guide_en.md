@@ -1,6 +1,6 @@
 # AbcSubmit Form Builder
 
-The **AbcSubmit Form Builder** enables the integration of Google Maps in your online store via the Shop Builder.
+The **AbcSubmit Form Builder** allows form creation and form embedding inside your shop pages.
 
 ##  Setting up the AbcSubmit Form Builder 
 
@@ -12,4 +12,4 @@ Create your desired form and click on Publish to save your form inside your page
 
 ## License
 
-This project is licensed under the GNU AFFERO GENERAL PUBLIC LICENSE. – find further information in the [LICENSE.md](https://github.com/plentymarkets/plugin-ceres/blob/stable/LICENSE.md).
+This project is licensed under the GNU GENERAL PUBLIC LICENSE version 2 or later. – find further information by navigating [here](https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html).

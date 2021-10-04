@@ -5,7 +5,7 @@
         function getAbcSubmitFormIdForCeresUniqueId( ceresUniqueId ) {
             return $.Deferred(function(defer) {
                 if ( ceresUniqueId) {
-                    $.get('https://plentymarkets.abcsubmit.com/api/v1/forms/publish/plentymarkets/' + ceresUniqueId)
+                    $.get('https://plentymarkets.abcsubmit.eu/api/v1/forms/publish/plentymarkets/' + ceresUniqueId)
                     .then(function (data) {
                         if(data && data.formId) {
                             defer.resolve(data.formId);
@@ -58,8 +58,8 @@
                 $(node).addClass('has-form');
 
                 var script = document.createElement('script');
-                script.src = 'https://plentymarkets.abcsubmit.com/embed/' + formId + '/embed.js';
-                script.setAttribute("data-origin", "plentymarkets.abcsubmit.com");
+                script.src = 'https://plentymarkets.abcsubmit.eu/embed/' + formId + '/embed.js';
+                script.setAttribute("data-origin", "plentymarkets.abcsubmit.eu");
                 script.setAttribute("data-role", "abcsubmit-form-embed");
                 script.setAttribute("data-document-id", formId);
                 script.setAttribute("type", 'text/javascript');
@@ -110,7 +110,7 @@
                     header.appendChild(closeButton);
                     var iframe       = document.createElement("iframe");
                     iframe.className = "abcsubmit-content-preview";
-                    iframe.src       = "https://plentymarkets.abcsubmit.com/edit/" + (formId || "") + "?ceresUniqueId=" + ceresUniqueId;
+                    iframe.src       = "https://plentymarkets.abcsubmit.eu/edit/" + (formId || "") + "?ceresUniqueId=" + ceresUniqueId;
                     iframe.setAttribute("frameborder", "0");
 
                     root.appendChild(header);

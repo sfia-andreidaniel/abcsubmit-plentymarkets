@@ -3,9 +3,9 @@
     "version": "1.0.0",
     "name": "AbcSubmit",
     "marketplaceName": { "de": "AbcSubmit Form Builder", "en": "AbcSubmit Form Builder" },
-    "description": "This is the AbcSubmit Form Builder Widget for the Shop Builder developed by AbcSubmit.",
+    "description": "This is the AbcSubmit Form Builder Widget for the Shop Builder.",
     "author": "AbcSubmit SRL",
-    "license": "AGPL-3.0",
+    "license": "GPL-2.0-or-later",
     "pluginIcon": "icon_plugin_xs.png",
     "price": 0.0,
     "shortDescription": {

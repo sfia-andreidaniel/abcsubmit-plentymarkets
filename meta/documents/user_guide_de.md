@@ -1,17 +1,15 @@
 # AbcSubmit Form Builder
 
-Das **AbcSubmit Forem Builder** ermöglicht die Einbindung von Google Maps im Webshop über den Shop Builder. 
+The **AbcSubmit Form Builder** allows form creation and form embedding inside your shop pages.
 
+##  Setting up the AbcSubmit Form Builder
 
-##  AbcSubmit Form Builder einbinden
+Go to the **CMS » Shop Builder** menu. Select the page into which you want to integrate a form. Select the **AbcSubmit Form Builder** from the list of widgets on the left side of the interface and place it at the desired location via drag & drop.
 
-Öffnen Sie das Menü **CMS » Shop Builder**. Wählen Sie die Seite, auf der Sie Google Maps einbinden wollen. Wählen Sie aus der Liste der Widgets auf der linken Seite das Google Maps Widget und ziehen Sie es via Drag&Drop an die gewünschte Stelle.
+Click on the **Edit Form** button inside your page to open the form editor.
 
-Geben Sie im Feld **Google API-Schlüssel** den API-Schlüssel von Google Maps ein. Diesen erhalten Sie von [Google Cloud](https://cloud.google.com/maps-platform/maps/?hl=de).
+Create your desired form and click on Publish to save your form inside your page.
 
-Geben Sie im Feld **Adresse** die Adresse, die Sie anzeigen lassen wollen, ein.
+## License
 
-
-## Lizenz
-
-Das gesamte Projekt unterliegt der GNU AFFERO GENERAL PUBLIC LICENSE – weitere Informationen finden Sie in der [LICENSE.md](https://github.com/plentymarkets/plugin-ceres/blob/stable/LICENSE.md).
+This project is licensed under the GNU GENERAL PUBLIC LICENSE version 2 or later. – find further information by navigating [here](https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html).

@@ -1,7 +1,7 @@
 [
     {
         "identifier": "AbcSubmit::FormMaker",
-        "label": "Widget.fomBuilderLabel",
+        "label": "Widget.formBuilderLabel",
         "previewImageURL": "/images/abcsubmit-widget.svg",
         "type": "default",
         "position": 1,

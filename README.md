@@ -1,4 +1,4 @@
-![plentymarkets Logo](http://www.plentymarkets.eu/layout/pm/images/logo/plentymarkets-logo.jpg)
+![AbcSubmit Logo](http://www.abcsubmit.eu/layout/pm/images/logo/plentymarkets-logo.jpg)
 
 # AbcSubmit Form Builder
 

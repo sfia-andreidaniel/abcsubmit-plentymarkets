@@ -1,9 +1,10 @@
-# Release Notes für Google Maps Widget
+# Release Notes for AbcSubmit Form Builder
 
-## v1.0.0 (2018-10-05)
+## v1.0.0 (2021-10-05)
 
-### Funktionen
-- Ermöglicht das Einbinden von Google Maps über den Shop Builder.
+### Features
+- Enables the integration of AbcSubmit forms via the Shop Builder.
+- All AbcSubmit features can be found on the [feature matrix page](https://www.abcsubmit.eu/plans-and-pricing).
 
-### Dokumentation
-- Eine ausführliche Beschreibung zur Entwicklung von Widgets und der Struktur des Google Maps Widgets finden Sie auf [plentymarkets developers](https://developers.plentymarkets.com/tutorials/my-first-shop-builder-widget).
+### Documentation
+- For a detailed guide about form creation and form builder features usage, please refer to the [AbcSubmit User Manual](https://www.abcsubmit.eu/static/abcsubmit-user-manual.pdf).
